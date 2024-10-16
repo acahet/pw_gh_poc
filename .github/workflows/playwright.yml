@@ -9,6 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
+      - uses: fregante/setup-git-user@v1
         with:
           node-version: 20
       - name: Install dependencies
@@ -37,7 +38,8 @@ jobs:
       - name: Checkout GitHub Pages Branch
         uses: actions/checkout@v4
         with:
-          ref: gh-pages
+          # ref: gh-pages
+          token: ${{ secrets.GH_TOKEN }}
       - name: Set Git User
         # see: https://github.com/actions/checkout/issues/13#issuecomment-724415212
         run: |
@@ -48,6 +50,7 @@ jobs:
         with:
           name: playwright-report
           path: ${{ env.HTML_REPORT_URL_PATH }}
+          
       - name: Push HTML Report
         timeout-minutes: 3
         # commit report, then try push-rebase-loop until it's able to merge the HTML report to the gh-pages branch
