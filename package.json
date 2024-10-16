@@ -1,0 +1,13 @@
+{
+  "name": "pw_gh",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/acahet/pw_gh_poc.git",
+  "author": "Anderson Cahet <anderson.cahet@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.48.1",
+    "@types/node": "^22.7.5"
+  },
+  "scripts": {}
+}
