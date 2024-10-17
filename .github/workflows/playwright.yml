@@ -26,11 +26,9 @@ jobs:
       - name: Install Dependencies
         run: yarn install
 
-      - name: Install Playwright and Chromium
-        run: |
-          npx playwright install
-          npx playwright install chromium
-        
+      - name: Install Playwright with Dependencies
+        run: npx playwright install --with-deps
+
       - name: Run Playwright Tests
         run: yarn playwright test --reporter=html
 
@@ -63,11 +61,11 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: playwright-traces-${{github.run_number}}-${{github.run_attempt}}
-          path: playwright-report
+          path: ./playwright-report
       - name: Copy Playwright Report to Root
         run: |
           mkdir -p report
-          cp -r playwright-report/* ./report
+          cp -r ./playwright-report/* ./report
 
       - name: Commit and Push Changes
         env:
