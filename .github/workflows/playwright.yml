@@ -31,7 +31,8 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: test
+    needs: [test]
+    if: ${{ !cancelled() }}
     steps:
       - name: Checkout GitHub Pages Branch
         uses: actions/checkout@v4
