@@ -20,7 +20,7 @@ jobs:
         run: yarn install
 
       - name: Run Playwright Tests
-        run: yarn playwright test --reporter=html --grep "@high"
+        run: yarn playwright test --reporter=html
 
       - name: Upload Playwright Report
         uses: actions/upload-artifact@v3
