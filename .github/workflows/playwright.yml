@@ -69,6 +69,7 @@ jobs:
         run: |
           mkdir -p report
           cp -r ./playwright-report/* ./report
+          cp -r ./report/* ./  # Ensure the report contents are at the root level
 
       - name: Commit and Push Changes
         env:
