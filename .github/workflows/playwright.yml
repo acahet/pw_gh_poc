@@ -36,8 +36,8 @@ jobs:
         uses: actions/upload-artifact@v4
         if: ${{ failure() }}
         with:
-          name: playwright-traces-${{github.run_number}}-${{ github.run_attempt }}-${{ inputs.country }}-${{ inputs.environment }}
-          path: ${{ inputs.working-directory }}/playwright-report/*
+          name: playwright-traces-${{github.run_number}}-${{ github.run_attempt }}
+          path: ${{ inputs.working-directory }}/playwright-report
           retention-days: 7
           if-no-files-found: ignore
 
@@ -61,11 +61,11 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: playwright-report
-          path: ./playwright-report/
+          path: ${{ inputs.working-directory }}/playwright-report
       - name: Copy Playwright Report to Root
         run: |
           mkdir -p report
-          cp -r ./playwright-report/* ./report
+          cp -r ${{ inputs.working-directory }}/playwright-report/* ./report
 
       - name: Commit and Push Changes
         env:
