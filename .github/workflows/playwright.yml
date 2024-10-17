@@ -30,7 +30,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright Tests
-        run: yarn playwright test --reporter=html
+        run: yarn playwright test
 
       - name: Upload test artifacts
         uses: actions/upload-artifact@v4
