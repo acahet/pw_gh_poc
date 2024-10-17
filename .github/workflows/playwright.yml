@@ -37,8 +37,8 @@ jobs:
         if: ${{ failure() }}
         with:
           name: playwright-report
-          path: ${{ inputs.working-directory }}/playwright-report
-          retention-days: 7
+          path: playwright-report/
+          retention-days: 30
           if-no-files-found: ignore
 
   deploy:
