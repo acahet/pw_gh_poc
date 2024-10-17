@@ -19,6 +19,9 @@ jobs:
       - name: Install Dependencies
         run: yarn install
 
+      - name: Install Playwright with Dependencies
+        run: npx playwright install --with-deps
+        
       - name: Run Playwright Tests
         run: yarn playwright test --reporter=html
 
